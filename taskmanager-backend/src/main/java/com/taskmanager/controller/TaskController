@@ -1,0 +1,57 @@
+package com.taskmanager.controller;
+
+import com.taskmanager.entity.Task;
+import com.taskmanager.entity.User;
+import com.taskmanager.service.TaskService;
+import com.taskmanager.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/api/tasks")
+public class TaskController {
+
+    @Autowired
+    private TaskService taskService;
+
+    @Autowired
+    private UserService userService;
+
+    // Create a new task
+    @PostMapping("/create")
+    public Task createTask(@RequestParam String username, @RequestBody Task task) {
+        User user = userService.findByUsername(username).orElseThrow();
+        task.setUser(user);
+        return taskService.createTask(task);
+    }
+
+    // Get all tasks for a user
+    @GetMapping("/all")
+    public List<Task> getTasks(@RequestParam String username) {
+        User user = userService.findByUsername(username).orElseThrow();
+        return taskService.getTasks(user);
+    }
+
+    // Get tasks by status
+    @GetMapping("/status")
+    public List<Task> getTasksByStatus(@RequestParam String username, @RequestParam String status) {
+        User user = userService.findByUsername(username).orElseThrow();
+        return taskService.getTasksByStatus(user, status);
+    }
+
+    // Get tasks by priority
+    @GetMapping("/priority")
+    public List<Task> getTasksByPriority(@RequestParam String username, @RequestParam String priority) {
+        User user = userService.findByUsername(username).orElseThrow();
+        return taskService.getTasksByPriority(user, priority);
+    }
+
+    // Delete task
+    @DeleteMapping("/delete/{id}")
+    public String deleteTask(@PathVariable Long id) {
+        taskService.deleteTask(id);
+        return "Task deleted successfully";
+    }
+}

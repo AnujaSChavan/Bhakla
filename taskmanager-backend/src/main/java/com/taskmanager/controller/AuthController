@@ -1,0 +1,32 @@
+package com.taskmanager.controller;
+
+import com.taskmanager.model.User;
+import com.taskmanager.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/api/auth")
+public class AuthController {
+
+    @Autowired
+    private UserService userService;
+
+    @PostMapping("/signup")
+    public User signup(@RequestBody User user) {
+        User savedUser = userService.signup(user);
+        if(savedUser == null) {
+            throw new RuntimeException("Email already exists");
+        }
+        return savedUser;
+    }
+
+    @PostMapping("/login")
+    public User login(@RequestBody User user) {
+        User loggedUser = userService.login(user.getEmail(), user.getPassword());
+        if(loggedUser == null) {
+            throw new RuntimeException("Invalid credentials");
+        }
+        return loggedUser;
+    }
+}

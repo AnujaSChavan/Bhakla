@@ -1,0 +1,126 @@
+/* Global modern UI theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background: #f8fafc;
+  color: #1e293b;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  padding: 20px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(16,30,54,0.06);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.card:hover {
+  box-shadow: 0 6px 24px rgba(16,30,54,0.10);
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Sidebar modern look */
+.sidebar {
+  background: #fff;
+  border-right: 1px solid #e5eaf2;
+  box-shadow: 2px 0 8px rgba(16,30,54,0.03);
+  min-width: 250px;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.sidebar .active {
+  background: #e0e7ff;
+  color: #2563eb;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(59,130,246,0.08);
+}
+.sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.2rem;
+  border-radius: 12px;
+  color: #334155;
+  font-size: 1.08rem;
+  margin-bottom: 0.2rem;
+  transition: background 0.15s, color 0.15s;
+}
+.sidebar a:hover {
+  background: #f1f5ff;
+  color: #2563eb;
+}
+
+/* Accent and utility */
+.accent {
+  color: #2563eb;
+}
+.bg-accent {
+  background: #2563eb;
+  color: #fff;
+}
+.divider {
+  border-bottom: 1px solid #e5eaf2;
+  margin: 1.5rem 0;
+}
+
+/* Stat card icons */
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+.stat-high {
+  background: #fee2e2;
+  color: #ef4444;
+}
+.stat-medium {
+  background: #fef3c7;
+  color: #f59e0b;
+}
+.stat-low {
+  background: #d1fae5;
+  color: #22c55e;
+}
+
+button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  background: #3b82f6;
+  color: white;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #2563eb;
+}
+input, select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
